@@ -119,11 +119,12 @@ impl Application for GUI {
 
     fn view(&mut self) -> Element<Self::Message> {
         // prepare duration text
-        let seconds = self.total_duration.as_secs
+        let seconds = self.total_duration.as_secs();
         let duration_text = format!(
-            "{:0>2}:{:0>2}:{:0>2}:{:0>2}}",
+            "{:0>2}:{:0>2}:{:0>2}:{:0>2}",
             seconds / HOUR,
             (seconds % HOUR) / MINUTE,
+            seconds % MINUTE,
             self.total_duration.subsec_millis() / 10,
         );
 
